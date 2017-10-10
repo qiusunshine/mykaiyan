@@ -1,7 +1,6 @@
 package com.hdy.mykaiyan;
 
 import android.app.Application;
-
 import cn.finalteam.okhttpfinal.OkHttpFinal;
 import cn.finalteam.okhttpfinal.OkHttpFinalConfiguration;
 
