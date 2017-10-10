@@ -37,7 +37,6 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
 
     }
-
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
