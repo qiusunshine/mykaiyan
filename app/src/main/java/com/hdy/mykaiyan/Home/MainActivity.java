@@ -8,12 +8,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.hdy.mykaiyan.Base.BaseActivity;
 import com.hdy.mykaiyan.R;
+import com.hdy.mykaiyan.Util.FragmentController;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
     private int TextViewSelect=1;
-
+    private FragmentController controller;
     @InjectView(R.id.ac_main_container)
     FrameLayout acMainContainer;
     @InjectView(R.id.ac_main_bot_feed)
@@ -29,13 +31,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initLayout(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
+        setTheme(R.style.AppThemeNoActionbar);
         setContentView(R.layout.activity_main);
     }
 
     @Override
     protected void initView() {
-
+        controller= FragmentController.getInstance(this,R.id.ac_main_container);
+        //添加fragment
+        controller.addFragment(new FeedFragment())
+                .addFragment(new FollowFragment())
+                .addFragment(new CategoryFragment())
+                .addFragment(new ProfileFragment());
+        //初始化fragment
+        controller.showFragment(0);
     }
     @Override
     protected void processLogic(Bundle savedInstanceState) {
@@ -81,28 +90,38 @@ public class MainActivity extends BaseActivity {
                 dra=getResources().getDrawable(R.drawable.ic_tab_strip_icon_feed_selected);
                 dra.setBounds( 0, 0, dra.getMinimumWidth(),dra.getMinimumHeight());
                 acMainBotFeed.setCompoundDrawables(null,dra,null,null);
+                controller.showFragment(0);
                 break;
             case R.id.ac_main_bot_follow:
                 TextViewSelect=2;
                 dra=getResources().getDrawable(R.drawable.ic_tab_strip_icon_follow_selected);
                 dra.setBounds( 0, 0, dra.getMinimumWidth(),dra.getMinimumHeight());
                 acMainBotFollow.setCompoundDrawables(null,dra,null,null);
+                controller.showFragment(1);
                 break;
             case R.id.ac_main_bot_category:
                 TextViewSelect=3;
                 dra=getResources().getDrawable(R.drawable.ic_tab_strip_icon_category_selected);
                 dra.setBounds( 0, 0, dra.getMinimumWidth(),dra.getMinimumHeight());
                 acMainBotCategory.setCompoundDrawables(null,dra,null,null);
+                controller.showFragment(2);
                 break;
             case R.id.ac_main_bot_profile:
                 TextViewSelect=4;
                 dra=getResources().getDrawable(R.drawable.ic_tab_strip_icon_profile_selected);
                 dra.setBounds( 0, 0, dra.getMinimumWidth(),dra.getMinimumHeight());
                 acMainBotProfile.setCompoundDrawables(null,dra,null,null);
+                controller.showFragment(3);
                 break;
         }
         //
         TextView t=(TextView)view;
         t.setTextColor(getResources().getColor(R.color.text_select_dark));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FragmentController.destoryController();
     }
 }

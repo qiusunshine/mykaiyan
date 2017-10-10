@@ -9,6 +9,10 @@
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
+    <style name="AppThemeNoActionbar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        </style>
     <style name="SplashTheme" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="android:windowFullscreen">true</item>
