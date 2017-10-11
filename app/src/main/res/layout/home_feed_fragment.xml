@@ -3,10 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
+<android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="feed_fragment"
-    android:gravity="center"
-    android:textColor="@color/colorAccent"/>
+    android:id="@+id/home_feed_recyclerv"/>
 </LinearLayout>

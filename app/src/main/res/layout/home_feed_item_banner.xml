@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:background="@drawable/home_feed_banner_test">
+<android.support.v4.view.ViewPager
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/home_feed_banner_vp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="44dp"
+            android:tint="@color/white"
+            android:tintMode="screen"
+            android:src="@drawable/home_page_header_icon"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/home_feed_banner_header"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="这是标题"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:id="@+id/home_feed_banner_title"
+            android:layout_below="@id/home_feed_banner_header"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="这是详情"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:id="@+id/home_feed_banner_desc"
+            android:layout_below="@id/home_feed_banner_title"/>
+    </RelativeLayout>
+</RelativeLayout>
