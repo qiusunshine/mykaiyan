@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="280dp"
@@ -38,4 +43,29 @@
             android:id="@+id/home_feed_banner_desc"
             android:layout_below="@id/home_feed_banner_title"/>
     </RelativeLayout>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_action_search_white"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/home_feed_banner_search"/>
 </RelativeLayout>
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="50dp"
+android:background="@drawable/shape_bottom_border">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    android:id="@+id/home_feed_banner_btm_text"
+    android:text="更多开眼编辑精选"/>
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/goto_icon"
+    android:layout_toEndOf="@id/home_feed_banner_btm_text"
+    android:layout_centerVertical="true"/>
+</RelativeLayout>
+</LinearLayout>
