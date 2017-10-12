@@ -15,8 +15,8 @@ import com.hdy.mykaiyan.R;
  */
 
 public class VhFeedFollowCard extends RecyclerView.ViewHolder {
-    ImageView img,icon,more;
-    TextView title,desc;
+    public ImageView img,icon,more;
+    public TextView title,desc;
     public VhFeedFollowCard(View itemView) {
         super(itemView);
         img=itemView.findViewById(R.id.home_feed_followcard_img);

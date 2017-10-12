@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedBanner;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedFollowCard;
 import com.hdy.mykaiyan.R;
-import org.json.JSONArray;
+import java.util.List;
 
 /**
  * 作者：By hdy
@@ -19,17 +19,21 @@ public class adapter_feed extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private Context context;
     private static final int TYPE_banner = 1;
     private static final int TYPE_follow_card = 2;
-    private JSONArray bannerArray,followCardArray;
-    public adapter_feed(Context context, JSONArray bannerArray,JSONArray followCardArray){
+    private List<DataCard> followCardArray;
+    public adapter_feed(Context context, List<DataCard> followCardArray){
         this.context=context;
-        this.bannerArray=bannerArray;
+        //TODO this.bannerArray=bannerArray;
         this.followCardArray=followCardArray;
     }
 
     @Override
     public int getItemViewType(int position) {
-        //TODO 分类型加载布局
-        return super.getItemViewType(position);
+        if(position==0){
+            return TYPE_banner;
+        }
+        else {
+            return TYPE_follow_card;
+        }
     }
 
     @Override
@@ -38,24 +42,22 @@ public class adapter_feed extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             case TYPE_banner:
                 return new VhFeedBanner(LayoutInflater.from(context).inflate(R.layout.home_feed_item_banner,parent,false));
             case TYPE_follow_card:
+                return new VhFeedFollowCard(LayoutInflater.from(context).inflate(R.layout.home_feed_item_followcard,parent,false));
             default:return new VhFeedFollowCard(LayoutInflater.from(context).inflate(R.layout.home_feed_item_followcard,parent,false));
         }
     }
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, int position) {
-        BindViewHolderHelperFeed bindViewHolderHelperFeed=new BindViewHolderHelperFeed(viewHolder,position,this);
+        BindViewHolderHelperFeed bindViewHolderHelperFeed=new BindViewHolderHelperFeed(context,viewHolder,position,this);
         bindViewHolderHelperFeed.DoBindViewHolder();
     }
 
     @Override
     public int getItemCount() {
-        return bannerArray.length()+1;
+        return followCardArray.size()+1;
     }
 
-    public JSONArray getBannerArray(){
-        return bannerArray;
-    }
-    public JSONArray getFollowCardArray(){
+    public List<DataCard> getFollowCardArray(){
         return followCardArray;
     }
 }

@@ -15,9 +15,9 @@ import com.hdy.mykaiyan.R;
  */
 
 public class VhFeedBanner extends RecyclerView.ViewHolder {
-    ImageView search;
-    TextView title,desc;
-    ViewPager viewPager;
+    public ImageView search;
+    public TextView title,desc;
+    public ViewPager viewPager;
     public VhFeedBanner(View itemView) {
         super(itemView);
         search=itemView.findViewById(R.id.home_feed_banner_search);

@@ -1,42 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
-    android:orientation="vertical">
+    android:layout_height="320dp"
+    android:orientation="vertical"
+    android:background="@color/white">
 <ImageView
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="230dp"
     android:scaleType="centerCrop"
     android:src="@drawable/cover_default"
     android:id="@+id/home_feed_followcard_img"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp">
+        android:layout_margin="15dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/shape_bottom_border">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
             android:src="@drawable/account_default_avatar"
             android:id="@+id/home_feed_followcard_icon"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_feed_followcard_title"
-            android:text="加载中..."
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:layout_toEndOf="@id/home_feed_followcard_icon"
-            android:layout_marginStart="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_feed_followcard_desc"
-            android:text="加载中..."
-            android:layout_toEndOf="@id/home_feed_followcard_icon"
-            android:layout_marginStart="10dp"
-            android:layout_below="@id/home_feed_followcard_title"
-            android:layout_marginTop="2dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,5 +29,27 @@
             android:layout_alignParentEnd="true"
             android:id="@+id/home_feed_followcard_more"
             android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_feed_followcard_title"
+            android:text="加载中..."
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:layout_toStartOf="@id/home_feed_followcard_more"
+            android:layout_toEndOf="@id/home_feed_followcard_icon"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/home_feed_followcard_desc"
+            android:text="加载中..."
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:layout_toEndOf="@id/home_feed_followcard_icon"
+            android:layout_marginStart="10dp"
+            android:layout_below="@id/home_feed_followcard_title"
+            android:layout_marginTop="2dp"/>
     </RelativeLayout>
 </LinearLayout>

@@ -1,9 +1,13 @@
 package com.hdy.mykaiyan.Feed;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedBanner;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedFollowCard;
-import org.json.JSONArray;
+import com.hdy.mykaiyan.R;
+import java.util.List;
 
 /**
  * 作者：By hdy
@@ -11,16 +15,24 @@ import org.json.JSONArray;
  * 时间：At 21:17
  */
 
-public class BindViewHolderHelperFeed {
+class BindViewHolderHelperFeed {
     private RecyclerView.ViewHolder viewHolder;
     private adapter_feed myadapter_feed;
-    int position;
-    public BindViewHolderHelperFeed(RecyclerView.ViewHolder viewHolder,int position,adapter_feed myadapter_feed){
+    private Context context;
+    private int position;
+    private RequestOptions options;
+    BindViewHolderHelperFeed(Context context, RecyclerView.ViewHolder viewHolder, int position, adapter_feed myadapter_feed){
+        this.context=context;
         this.viewHolder=viewHolder;
         this.position=position;
         this.myadapter_feed=myadapter_feed;
     }
-    public void DoBindViewHolder(){
+    void DoBindViewHolder(){
+        //Glide加载参数初始化
+         options= new RequestOptions()
+                .centerCrop()
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.loading);
         if(viewHolder instanceof VhFeedBanner){
             bindVhFeedBanner();
         }
@@ -28,13 +40,20 @@ public class BindViewHolderHelperFeed {
             bindVhFeedFollowCard();
         }
     }
-    public void bindVhFeedBanner(){
-        JSONArray jsonArray=myadapter_feed.getBannerArray();
-        //TODO  将数据绑定到view
+    private void bindVhFeedBanner(){
+        //TODO  将数据绑定到Bannerview
     }
-    public void bindVhFeedFollowCard(){
-        JSONArray jsonArray=myadapter_feed.getFollowCardArray();
-        //TODO  将数据绑定到view
+    private void bindVhFeedFollowCard(){
+        //TODO 根据iconType为icon设置不同的形状
+            List<DataCard> jsonArray=myadapter_feed.getFollowCardArray();
+            DataCard databean=jsonArray.get(position-1);//注意之前有banner，需要减1
+            VhFeedFollowCard holder=(VhFeedFollowCard)viewHolder;
+            holder.title.setText(databean.getTitle());
+            holder.desc.setText(databean.getDesc());
+            Glide.with(context).asBitmap().load(databean.getIcon()).apply(options)
+                    .into(holder.icon);
+            Glide.with(context).asBitmap().load(databean.getCover()).apply(options)
+                    .into(holder.img);
     }
 
 }
