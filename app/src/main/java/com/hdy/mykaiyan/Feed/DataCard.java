@@ -16,11 +16,12 @@ public class DataCard {
     private int collectionCount;
     private int shareCount;
     private int replyCount;
-    private int id;
-    public int getId() {
+
+    private String id;
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getTitle() {
@@ -84,7 +85,7 @@ public class DataCard {
         this.replyCount = replyCount;
     }
 
-    private class playinfo{
+    public static class playinfo{
         private String low,normal,high;
         public String getLow() {
             return low;

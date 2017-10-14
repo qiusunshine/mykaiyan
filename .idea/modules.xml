@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/ColorDialog/ColorDialogThis.iml" filepath="$PROJECT_DIR$/ColorDialog/ColorDialogThis.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mykaiyan2.iml" filepath="$PROJECT_DIR$/mykaiyan2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pullzoom/pullzoom.iml" filepath="$PROJECT_DIR$/pullzoom/pullzoom.iml" />
     </modules>
   </component>
 </project>

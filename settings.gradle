@@ -1,2 +1,2 @@
-include ':app', ':ColorDialogThis'
+include ':app', ':ColorDialogThis', ':pullzoom'
 project(':ColorDialogThis').projectDir = new File('ColorDialog')

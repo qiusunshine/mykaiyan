@@ -62,4 +62,9 @@ public class FragmentController {
     public static void destoryController(){
         controller = null;
     }
+    public void destoryFragment(int position){
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.remove(fragments.get(position));
+        ft.commit();
+    }
 }

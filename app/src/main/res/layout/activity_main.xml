@@ -62,5 +62,4 @@
     android:layout_height="match_parent"
     android:id="@+id/ac_main_container"
     android:layout_above="@id/ac_main_lay"/>
-
 </RelativeLayout>
