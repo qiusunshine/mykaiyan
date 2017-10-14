@@ -1,7 +1,6 @@
 package com.hdy.mykaiyan.Feed.Presenter;
 
 import com.hdy.mykaiyan.Feed.DataCard;
-
 import java.util.List;
 
 /**
@@ -12,8 +11,7 @@ import java.util.List;
 
 public interface PresenterContract {
     interface Presenter{
-        void initData();
-        void loadmore();
+        void getData(String data);
     }
     interface View{
         void showInitSuccess(List<DataCard> dataCards);

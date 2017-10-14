@@ -12,11 +12,13 @@ import com.hdy.mykaiyan.Base.BaseFragment;
 import com.hdy.mykaiyan.Feed.Banner.Xcircleindicator;
 import com.hdy.mykaiyan.Feed.DataCard;
 import com.hdy.mykaiyan.Feed.Banner.PagerTransformer.ZoominPagerTransFormer;
+import com.hdy.mykaiyan.Feed.Moudle.getFollowCards;
 import com.hdy.mykaiyan.Feed.Presenter.Presenter;
 import com.hdy.mykaiyan.Feed.adapter_feed;
 import com.hdy.mykaiyan.Feed.Presenter.PresenterContract;
 import com.hdy.mykaiyan.Feed.onFeedItemClickListener;
 import com.hdy.mykaiyan.R;
+import com.hdy.mykaiyan.Util.Constants;
 import com.jingewenku.abrahamcaijin.commonutil.AppToastMgr;
 import com.lzy.widget.PullZoomView;
 import com.lzy.widget.manager.ExpandLinearLayoutManager;
@@ -96,8 +98,8 @@ public class FeedFragment extends BaseFragment implements PresenterContract.View
     }
     @Override
     protected void initData() {
-        presenter=new Presenter(getContext(),this);
-        presenter.initData();
+        presenter=new Presenter(this,new getFollowCards());
+        presenter.getData(Constants.Feed_Api_Url);
     }
     @Override
     public void showInitSuccess(List<DataCard> dataCards) {
@@ -134,7 +136,7 @@ public class FeedFragment extends BaseFragment implements PresenterContract.View
                 .setAction("确定", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        presenter.initData();
+                        presenter.getData(Constants.Feed_Api_Url);
                     }
                 }).show();
     }
