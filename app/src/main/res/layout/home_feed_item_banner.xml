@@ -2,6 +2,7 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="330dp"
     xmlns:indicator="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:tag="header"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginBottom="10dp"
@@ -45,46 +46,45 @@
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp">
-
         <ImageView
             android:layout_width="120dp"
             android:layout_height="44dp"
-            android:tint="@color/white"
-            android:tintMode="screen"
             android:src="@drawable/home_page_header_icon"
             android:layout_centerHorizontal="true"
             android:id="@+id/home_feed_banner_header"/>
-        <TextView
+        <com.hdy.mykaiyan.View.PrinterTextView
             android:layout_width="wrap_content"
+            android:singleLine="true"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="这是标题"
+            android:text=""
             android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
             android:id="@+id/home_feed_banner_title"
             android:layout_below="@id/home_feed_banner_header"/>
-        <TextView
+        <com.hdy.mykaiyan.View.PrinterTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="这是详情"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:text=""
+            android:gravity="center_vertical"
             android:textColor="@color/white"
             android:id="@+id/home_feed_banner_desc"
             android:layout_below="@id/home_feed_banner_title"/>
-        <com.hdy.mykaiyan.Feed.Banner.Xcircleindicator
-            android:id="@+id/Xcircleindicator"
+        <com.hdy.mykaiyan.View.IndicatorView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:layout_marginBottom="5dp"
-            indicator:circleInterval="8dp"
-            indicator:fillColor="@color/white"
-            indicator:radius="4dp"
-            indicator:strokeColor="#cecece" />
+            android:id="@+id/home_feed_banner_btm_indicator"
+            app:indicatorNormalColor="#ffffff"
+            app:indicatorRadius="10dp"
+            app:indicatorSelectedColor="@color/colorAccent"
+            app:indicatorTextSize="14sp"
+            app:indicatorType="number" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedFollowCard;
+import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedVideoCollection;
 import com.hdy.mykaiyan.R;
 import java.util.List;
 
@@ -16,7 +19,7 @@ import java.util.List;
 
 public class adapter_feed extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private static final int TYPE_banner = 1;
+    private static final int TYPE_videoCollectionWithCover = 1;
     private static final int TYPE_follow_card = 2;
     private List<DataCard> followCardArray;
     private onFeedItemClickListener onItemClickListener;
@@ -30,15 +33,22 @@ public class adapter_feed extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
     @Override
     public int getItemViewType(int position) {
+        if(followCardArray.get(position).getType().equals("followCard"))
             return TYPE_follow_card;
+        else return TYPE_videoCollectionWithCover;
     }
-
+    public void addItem(List<DataCard> dataCards){
+        for(int i=0;i<dataCards.size();i++){
+            followCardArray.add(dataCards.get(i));
+        }
+        notifyDataSetChanged();
+    }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){
             case TYPE_follow_card:
                 return new VhFeedFollowCard(LayoutInflater.from(context).inflate(R.layout.home_feed_item_followcard,parent,false));
-            default:return new VhFeedFollowCard(LayoutInflater.from(context).inflate(R.layout.home_feed_item_followcard,parent,false));
+            default:return new VhFeedVideoCollection(LayoutInflater.from(context).inflate(R.layout.home_feed_item_followcard,parent,false));
         }
     }
     @Override

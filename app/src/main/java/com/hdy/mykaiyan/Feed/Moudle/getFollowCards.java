@@ -1,7 +1,9 @@
 package com.hdy.mykaiyan.Feed.Moudle;
 
-import com.hdy.mykaiyan.Feed.DataCard;
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 import com.hdy.mykaiyan.Feed.MyObservable;
+
+import java.util.ArrayList;
 import java.util.List;
 import cn.finalteam.okhttpfinal.HttpRequest;
 import cn.finalteam.okhttpfinal.JsonHttpRequestCallback;
@@ -23,13 +25,13 @@ public class getFollowCards implements NetTask<String> {
     public getFollowCards(){
     }
     @Override
-    public void execute(String data, final LoadCallback callback) {
+    public void execute(final String data, final LoadCallback callback) {
         callback.onStart();
         HttpRequest.get(data,new JsonHttpRequestCallback(){
             @Override
             protected void onSuccess(final com.alibaba.fastjson.JSONObject jsonObject) {
                 super.onSuccess(jsonObject);
-                Observable<List<DataCard>> observable=new MyObservable().getObservable(jsonObject);
+                Observable<List<DataCard>> observable=new MyObservable(data).getObservable(jsonObject);
                 Observer<List<DataCard>> observer=new Observer<List<DataCard>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -39,7 +41,15 @@ public class getFollowCards implements NetTask<String> {
                             callback.onFailed();
                         }
                         else {
-                            callback.onSuccess(dataCards);
+                            List<DataCard> dataCard1= new ArrayList<>();
+                            List<DataCard> dataCard2=dataCards;
+                            for (int i=0;i<dataCards.size();i++) {
+                                if(dataCards.get(i).getType().equals("HorizontalScrollCard")){
+                                    dataCard1.add(dataCards.get(i));
+                                    dataCard2.remove(dataCards.get(i));
+                                }
+                            }
+                            callback.onSuccess(data,dataCard1,dataCard2);
                         }
 
                     }

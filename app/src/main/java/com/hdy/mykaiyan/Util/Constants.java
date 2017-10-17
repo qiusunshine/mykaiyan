@@ -7,5 +7,7 @@ package com.hdy.mykaiyan.Util;
  */
 
 public class Constants {
-    public static String Feed_Api_Url="http://baobab.kaiyanapp.com/api/v4/tabs/selected?lastStartId=5230&udid=cb580658f2e24e67a15cfa5f7b559799daece6b7&vc=225&vn=3.12.0&deviceModel=1503-A01";
+    public static String Feed_Api_Url="http://baobab.kaiyanapp.com/api/v4/tabs/selected?lastStartId=5230&udid=cb580658f2e24e67a15cfa5f7b559799daece6b7&vc=225&vn=3.12.0&deviceModel=1503-A01&num=2";
+    public static String Feed_Api_Url_More="http://baobab.kaiyanapp.com/api/v4/tabs/selected?lastStartId=5230&udid=cb580658f2e24e67a15cfa5f7b559799daece6b7&vc=225&vn=3.12.0&deviceModel=1503-A01&num=2&page=";
+
 }

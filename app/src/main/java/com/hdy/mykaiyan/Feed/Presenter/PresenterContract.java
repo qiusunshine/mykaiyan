@@ -1,6 +1,6 @@
 package com.hdy.mykaiyan.Feed.Presenter;
 
-import com.hdy.mykaiyan.Feed.DataCard;
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 import java.util.List;
 
 /**
@@ -14,9 +14,9 @@ public interface PresenterContract {
         void getData(String data);
     }
     interface View{
-        void showInitSuccess(List<DataCard> dataCards);
+        void showInitSuccess(List<DataCard> topIssues, List<DataCard> dataCards);
         void showLoading();
-        void showLoadSuccess();
+        void showLoadSuccess(List<DataCard> dataCards);
         void showLoadFail();
     }
 }

@@ -2,7 +2,9 @@ package com.lzy.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -46,7 +48,6 @@ public class PullZoomView extends ScrollView {
     private float downY;                    //Down事件的Y坐标
     private int maxY;                       //允许的最大滑出距离
     private int touchSlop;
-
     private OnScrollListener scrollListener;  //滚动的监听
 
     public void setOnScrollListener(OnScrollListener scrollListener) {
@@ -57,7 +58,8 @@ public class PullZoomView extends ScrollView {
     public static abstract class OnScrollListener {
         public void onScroll(int l, int t, int oldl, int oldt) {
         }
-
+        public void scrollToBottom(int l, int t, int oldl, int oldt) {
+        }
         public void onHeaderScroll(int currentY, int maxY) {
         }
 
@@ -108,7 +110,6 @@ public class PullZoomView extends ScrollView {
             }
         });
     }
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -152,11 +153,15 @@ public class PullZoomView extends ScrollView {
     }
 
     private boolean scrollFlag = false;  //该标记主要是为了防止快速滑动时，onScroll回调中可能拿不到最大和最小值
-
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if (scrollListener != null) scrollListener.onScroll(l, t, oldl, oldt);
+        if (scrollListener != null) {
+           if (getScrollY() + getHeight() - getPaddingTop()-getPaddingBottom() == getChildAt(0).getHeight()) {
+            scrollListener.scrollToBottom(l, t, oldl, oldt);
+            }
+            scrollListener.onScroll(l, t, oldl, oldt);
+        }
         if (t >= 0 && t <= maxY) {
             scrollFlag = true;
             if (scrollListener != null) scrollListener.onHeaderScroll(t, maxY);
@@ -167,7 +172,9 @@ public class PullZoomView extends ScrollView {
             if (scrollListener != null) scrollListener.onHeaderScroll(t, maxY);
         }
         if (t >= maxY) {
-            if (scrollListener != null) scrollListener.onContentScroll(l, t - maxY, oldl, oldt - maxY);
+            if (scrollListener != null) {
+                scrollListener.onContentScroll(l, t - maxY, oldl, oldt - maxY);
+            }
         }
         if (isParallax) {
             if (t >= 0 && t <= headerHeight) {

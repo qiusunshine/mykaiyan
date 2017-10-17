@@ -9,6 +9,7 @@ import android.view.View;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 import com.hdy.mykaiyan.Feed.ViewHolder.VhFeedFollowCard;
 import com.hdy.mykaiyan.R;
 import java.util.List;

@@ -1,8 +1,10 @@
 package com.hdy.mykaiyan.Feed.Presenter;
 
-import com.hdy.mykaiyan.Feed.DataCard;
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 import com.hdy.mykaiyan.Feed.Moudle.LoadCallback;
 import com.hdy.mykaiyan.Feed.Moudle.NetTask;
+import com.hdy.mykaiyan.Util.Constants;
+
 import java.util.List;
 /**
  * 作者：By hdy
@@ -19,14 +21,16 @@ public class Presenter implements PresenterContract.Presenter,LoadCallback {
     }
     @Override
     public void getData(String data) {
+
         netTask.execute(data,this);
     }
 
     @Override
-    public void onSuccess(List<DataCard> list) {
-        view.showInitSuccess(list);
+    public void onSuccess(String url,List<DataCard> topIssues, List<DataCard> dataCards) {
+        if(url.equals(Constants.Feed_Api_Url))
+        view.showInitSuccess(topIssues,dataCards);
+        else view.showLoadSuccess(dataCards);
     }
-
     @Override
     public void onStart() {
         view.showLoading();

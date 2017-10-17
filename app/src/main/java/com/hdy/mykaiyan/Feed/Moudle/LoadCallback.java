@@ -1,6 +1,6 @@
 package com.hdy.mykaiyan.Feed.Moudle;
 
-import com.hdy.mykaiyan.Feed.DataCard;
+import com.hdy.mykaiyan.Feed.JavaBean.DataCard;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public interface LoadCallback{
-    void onSuccess(List<DataCard> dataCards);
+    void onSuccess(String url,List<DataCard> topIssues,List<DataCard> dataCards);
     void onStart();
     void onFailed();
 }

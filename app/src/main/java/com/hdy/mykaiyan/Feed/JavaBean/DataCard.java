@@ -1,4 +1,4 @@
-package com.hdy.mykaiyan.Feed;
+package com.hdy.mykaiyan.Feed.JavaBean;
 
 /**
  * 作者：By hdy
@@ -16,8 +16,14 @@ public class DataCard {
     private int collectionCount;
     private int shareCount;
     private int replyCount;
-
+    private String type;
     private String id;
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
     public String getId() {
         return id;
     }

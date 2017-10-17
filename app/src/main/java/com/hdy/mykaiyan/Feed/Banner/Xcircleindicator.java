@@ -19,7 +19,6 @@ public class Xcircleindicator extends View {
     private final Paint mPaintStroke = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint mPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int currentScroll = 0;
-    private int flowWidth = 0;
     private int pageTotalCount = 1;
     private int currentPage = 0;
     private int circleInterval = radius;
@@ -58,9 +57,8 @@ public class Xcircleindicator extends View {
 
     }
     //设置当前应显示圆点的总数
-    public void initData(int count, int contentWidth) {
+    public void initData(int count) {
         this.pageTotalCount = count;
-        this.flowWidth = contentWidth;
         invalidate();
     }
     //设置当前圆点

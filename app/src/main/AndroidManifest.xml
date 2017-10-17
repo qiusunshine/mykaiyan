@@ -18,16 +18,13 @@
         <activity android:name=".FastCopy.activity_recyclerview" />
         <activity
             android:name=".Home.MainActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:hardwareAccelerated="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".Home.SplashActivity"
-            android:theme="@style/SplashTheme">
         </activity>
 
     </application>
